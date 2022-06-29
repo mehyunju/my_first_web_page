@@ -8,11 +8,56 @@
 
 <body>
   <h1><a href="index.html">WEB</a></h1>
+<!--버튼하나만만들어서바뀌게하는것을 토글(toggle)이라고 한다 -->
+<!--조건문이해하기ㅣㅣㅣㅣㅣㅣㅣㅣㅣㅣㅣㅣㅣㅣㅣ-->
+<!--  <input id="night_day" type="button" value="night" onclick="
+    if(document.querySelector('#night_day').value === 'night') {
+      document.querySelector('body').style.backgroundColor = 'black';
+      document.querySelector('body').style.color= 'white';
+      document.querySelector('#night_day').value = 'day';
+    } else {
+      document.querySelector('body').style.backgroundColor = 'white';
+      document.querySelector('body').style.color= 'black';
+      document.querySelector('#night_day').value = 'night';
+    }
+">
+-->
+<!--위 코드를 리팩토링한다면?-->
+<input type="button" value="night" onclick="
+  var target = document.querySelector('body');
+  if(this.value === 'night') {
+    target.style.backgroundColor = 'black';
+    target.style.color= 'white';
+    this.value = 'day';
+
+    var alist = document.querySelectorAll('a');
+    var i = 0;
+    while(i < alist.length){
+        alist[i].style.color = 'powderblue';
+        i = i + 1;
+    }
+  } else {
+    target.style.backgroundColor = 'white';
+    target.style.color= 'black';
+    this.value = 'night';
+
+    var alist = document.querySelectorAll('a');
+    var i = 0;
+    while(i < alist.length){
+        alist[i].style.color = 'blue';
+        i = i + 1;
+      }
+    }
+">
+<!--
+1. document.querySelector('#night_day2')는 this라는 인덱스태그를 가리키는 특수한태그로 바꿔주고 this로 바꾸면 더이상 인덱스를 참조하는 id태그는 지워도된다
+2. document.querySelector('body')의 중복을 제거하기위해 var target으로 지정한다
+-->
   <div id="grid">
     <ol>
-      <li><a href="1.html">HTML</a></li>
-      <li><a href="2.html">CSS</a></li>
-      <li><a href="3.html">JavaScript</a></li>
+      <li><a>HTML</a></li>
+      <li><a>CSS</a></li>
+      <li><a>JavaScript</a></li>
     </ol>
 
   <div id="article">
@@ -20,13 +65,38 @@
     <p>
 
     <iframe width="560" height="315" src="https://www.youtube.com/embed/dPRtcRwKo-Y" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-  </p>
-
+    </p>
     <p>JavaScript는 정적인 HTML 문서와 달리 동적인 화면을 웹페이지에 구현하기 위해 사용하는 스크립트 언어다. <bar>동적으로 콘텐츠를 바꾸고, 멀티미디어를 제어하고, 애니메이션을 추가하는 등 거의 모든 것을 만들 수 있는 스크립팅 언어다.</p>
 
     <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=872&q=80" width=50%;>
-<p style="margin-top:40px;">HTML elements are the building blocks of HTML pages. With HTML constructs, images, and other objects, such as interactivefors, may be embeddded into the renderded page. It provides a means to create structured documents by denoting structural semantics for text such as headings, paragraphs, lists, links, quotes and other items, HTML elements are delineated by tags, written using angle brakets.</p>
-  </div>
-  </div>
+    <p style="margin-top:40px;">HTML elements are the building blocks of HTML pages. With HTML constructs, images, and other objects, such as interactivefors, may be embeddded into the renderded page. It provides a means to create structured documents by denoting structural semantics for text such as headings, paragraphs, lists, links, quotes and other items, HTML elements are delineated by tags, written using angle brakets.</p>
+    </div>
+    </div>
+    <input type="button" value="night" onclick="
+      if(this.value === 'night') {
+        document.querySelector('body').style.backgroundColor = 'black';
+        document.querySelector('body').style.color= 'white';
+        this.value = 'day';
+
+        var alist = document.querySelectorAll('a');
+        var i = 0;
+        while(i < alist.length){
+            alist[i].style.color = 'powderblue';
+            i = i + 1;
+        }
+      } else {
+        document.querySelector('body').style.backgroundColor = 'white';
+        document.querySelector('body').style.color= 'black';
+        this.value = 'night';
+
+        var alist = document.querySelectorAll('a');
+        var i = 0;
+        while(i < alist.length){
+            alist[i].style.color = 'blue';
+            i = i + 1;
+          }
+      }
+  ">
+
 </body>
 </html>
